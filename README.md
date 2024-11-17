@@ -1,4 +1,4 @@
-# Belajar Git
+# Belajar Version Control dengan Git
 Branch ini berisi pembelajaran Git yang saya lakukan di minggu-0 study grup motion lab, termasuk penggunaan perintah dasar Git, manajemen branch, dan cara melakukan pull request serta merge, git reset, dan menggunakan SHH.
 ## 1. Inisialisasi Repository
 - Membuat repository lokal dengan perintah:
