@@ -74,8 +74,11 @@ cat ~/.ssh/id_rsa.pub
 ```bash
 git remote set-url origin git@github.com:rahmahaisyah/StudyGroup-MP-Motionlab.git
 ```
-- Push dan Pull Menggunakan SSH
+- Verifikasi Koneksi SSH menggunakan perintah:
 ```bash
-git push
-git pull
-```
+ssh -T git@github.com
+``` 
+- Jika berhasil akan koneksi berhasil, pada terminal terdapat pesan:
+```bash
+Hi rahmahaisyah! You've successfully authenticated, but GitHub does not provide shell access.
+``` 
