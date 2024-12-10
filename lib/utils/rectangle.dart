@@ -18,7 +18,7 @@ class Rectangle extends StatelessWidget {
       width: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color(0xffFCFFFE),
+        border: Border.all(color: Colors.black, width: 1),
       ),
       padding: const EdgeInsets.all(16),
       child: TextField(

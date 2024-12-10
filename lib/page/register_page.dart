@@ -14,23 +14,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffeeedf2),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Rectangle(
-              labelText: 'Full Name',
-              icon: Icons.person_outline,
-              textStyle: Style.headline4,
-            ),
-            const Gap(10),
-            Rectangle(
-              labelText: 'Email',
-              icon: Icons.email_outlined,
-              textStyle: Style.headline4,
-            ),
-          ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const Gap(220),
+              Column(
+                children: [
+                  Text(
+                    'Register',
+                    style: Style.headline,
+                    textAlign: TextAlign.center,
+                  ),
+                  const Gap(5),
+                  Text(
+                    'Create your account for Happy Shopping',
+                    style: Style.headline2,
+                    textAlign: TextAlign.center,
+                  ),
+                  const Gap(50),
+                  Rectangle(
+                    labelText: 'Full Name',
+                    icon: Icons.person_outline,
+                    textStyle: Style.headline4,
+                  ),
+                  const Gap(10),
+                  Rectangle(
+                    labelText: 'Email',
+                    icon: Icons.email_outlined,
+                    textStyle: Style.headline4,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
