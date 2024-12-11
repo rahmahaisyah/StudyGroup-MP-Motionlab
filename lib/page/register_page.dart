@@ -64,7 +64,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     labelText: 'Register',
                     textStyle: Style.headline3.copyWith(color: Colors.white),
                     onTap: () {
-                      const LoginScreen();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      );
                     },
                   ),
                   const Gap(10),
