@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:lottie/lottie.dart';
+import 'package:slicing_login/utils/app_style.dart';
+import 'package:slicing_login/utils/rectangle.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -6,11 +10,52 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffeeedf2),
       appBar: AppBar(
-        title: const Text('Login Screen'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(
+                context); // Menutup halaman login dan kembali ke halaman sebelumnya
+          },
+        ),
       ),
-      body: const Center(
-        child: Text('This is the login screen'),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const Gap(50),
+              Container(
+                child: Lottie.asset(
+                    height: 270, width: 270, 'assets/lottie1.json'),
+              ),
+              Text(
+                'Welcome!',
+                style: Style.headline,
+                textAlign: TextAlign.center,
+              ),
+              const Gap(3),
+              Text(
+                'Happy Shopping All',
+                style: Style.headline2,
+                textAlign: TextAlign.center,
+              ),
+              const Gap(18),
+              Rectangle(
+                labelText: 'Email',
+                icon: Icons.email_outlined,
+                textStyle: Style.headline4,
+              ),
+              const Gap(10),
+              Rectangle(
+                labelText: 'Password',
+                icon: Icons.lock_outline,
+                textStyle: Style.headline4,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
