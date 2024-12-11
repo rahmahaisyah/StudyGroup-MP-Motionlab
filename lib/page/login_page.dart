@@ -53,6 +53,31 @@ class LoginScreen extends StatelessWidget {
                 icon: Icons.lock_outline,
                 textStyle: Style.headline4,
               ),
+              const Gap(40),
+              RectangleButton(
+                bgColor: const Color(0xff00623B),
+                labelText: 'Login',
+                textStyle: Style.headline3.copyWith(color: Colors.white),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                  );
+                },
+              ),
+              const Gap(10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don’t have an account? ',
+                    style: Style.headline5,
+                  ),
+                  const Gap(5),
+                  Text('Register', style: Style.headline6),
+                ],
+              ),
             ],
           ),
         ),
