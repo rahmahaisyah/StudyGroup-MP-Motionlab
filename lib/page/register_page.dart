@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:slicing_login/page/login_page.dart';
 import 'package:slicing_login/utils/app_style.dart';
 import 'package:slicing_login/utils/rectangle.dart';
 
@@ -44,6 +45,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     labelText: 'Email',
                     icon: Icons.email_outlined,
                     textStyle: Style.headline4,
+                  ),
+                  const Gap(10),
+                  Rectangle(
+                    labelText: 'Password',
+                    icon: Icons.lock_outline,
+                    textStyle: Style.headline4,
+                  ),
+                  const Gap(10),
+                  Rectangle(
+                    labelText: 'Confirm Password',
+                    icon: Icons.lock_outline,
+                    textStyle: Style.headline4,
+                  ),
+                  const Gap(45),
+                  RectangleButton(
+                    bgColor: const Color(0xff00623B),
+                    labelText: 'Register',
+                    textStyle: Style.headline3.copyWith(color: Colors.white),
+                    onTap: () {
+                      const LoginScreen();
+                    },
+                  ),
+                  const Gap(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Already have an account?',
+                        style: Style.headline5,
+                      ),
+                      const Gap(9),
+                      Text('Login', style: Style.headline6),
+                    ],
                   ),
                 ],
               ),

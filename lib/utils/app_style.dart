@@ -10,25 +10,31 @@ class Style {
   static TextStyle headline2 = const TextStyle(
     fontSize: 16,
     color: Color(0xff707070),
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     fontFamily: 'Roboto',
   );
   static TextStyle headline3 = const TextStyle(
-    fontSize: 12,
-    color: Color(0xff00623B),
+    fontSize: 17,
+    color: Color(0xff344E41),
     fontWeight: FontWeight.w700,
     fontFamily: 'Roboto',
   );
   static TextStyle headline4 = const TextStyle(
-    fontSize: 2,
+    fontSize: 13,
     color: Color(0xff344E41),
-    fontWeight: FontWeight.w100,
+    fontWeight: FontWeight.w500,
     fontFamily: 'Roboto',
   );
   static TextStyle headline5 = const TextStyle(
-    fontSize: 14,
+    fontSize: 13,
     color: Colors.black,
-    fontWeight: FontWeight.w200,
+    fontWeight: FontWeight.w300,
+    fontFamily: 'Roboto',
+  );
+  static TextStyle headline6 = const TextStyle(
+    fontSize: 13,
+    color: Color(0xff344E41),
+    fontWeight: FontWeight.bold,
     fontFamily: 'Roboto',
   );
 }
