@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:motion_shop/widget/button_app.dart';
-import 'package:motion_shop/widget/field_form.dart';
-import 'package:motion_shop/widget/title_form.dart';
+import 'package:motion_shop/util/button_app.dart';
+import 'package:motion_shop/util/field_form.dart';
+import 'package:motion_shop/util/title_form.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -48,7 +49,7 @@ class RegisterPage extends StatelessWidget {
                 ),
                 ButtonApp(
                   onTap: () {
-                    Navigator.pushNamed(context, "/");
+                    Get.offNamed('/home');
                   },
                   text: "Register",
                 ),
@@ -65,7 +66,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, "/");
+                        Get.offNamed('/login');
                       },
                       child: Text(
                         "Login",

@@ -14,13 +14,11 @@ class ButtonApp extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: Colors.transparent,
-      // margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 14),
           width: double.infinity,
-          // color: const Color(0xFF00623B),
           decoration: BoxDecoration(
             color: const Color(0xFF00623B),
             borderRadius: BorderRadius.circular(10),
