@@ -5,12 +5,14 @@ class InputField extends StatelessWidget {
   final String hintText;
   final bool isPassword;
   final Widget? prefixIcon;
+  final TextEditingController? controller; // Tambahkan ini
 
   const InputField({
     Key? key,
     required this.hintText,
     this.isPassword = false,
     this.prefixIcon,
+    this.controller, // Tambahkan ini
   }) : super(key: key);
 
   @override
@@ -18,6 +20,7 @@ class InputField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextField(
+        controller: controller, // Gunakan controller di sini
         obscureText: isPassword,
         decoration: InputDecoration(
           hintText: hintText,

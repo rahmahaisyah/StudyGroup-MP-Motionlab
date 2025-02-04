@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
 import 'package:motion_shop/app/data/models/product_model_api.dart';
+import 'package:motion_shop/service/favorite_service.dart';
 import 'package:motion_shop/service/product_service.dart';
 
 class DetailProductController extends GetxController {
   final productService = ProductService();
+  final favoriteService = FavoriteService();
 
   var isLoading = false.obs;
-  var productDetail = Rxn<ProductElement>(); // bisa null
+  var productDetail = Rxn<ProductElement>();
+  var isFavorite = false.obs;
 
   @override
   void onInit() {
@@ -15,6 +18,7 @@ class DetailProductController extends GetxController {
     if (args != null && args['id'] != null) {
       final int productId = args['id'];
       fetchDetail(productId);
+      checkFavorite(productId);
     }
   }
 
@@ -30,5 +34,19 @@ class DetailProductController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  Future<void> checkFavorite(int productId) async {
+    final favorites = await favoriteService.getFavorites();
+    isFavorite.value = favorites.contains(productId);
+  }
+
+  Future<void> toggleFavorite(int productId) async {
+    if (isFavorite.value) {
+      await favoriteService.removeFavorite(productId);
+    } else {
+      await favoriteService.addFavorite(productId);
+    }
+    isFavorite.value = !isFavorite.value;
   }
 }

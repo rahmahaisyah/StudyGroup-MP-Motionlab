@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:motion_shop/app/routes/app_pages.dart';
+
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -15,6 +18,18 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     setState(() {
       _selectedIndex = index;
     });
+
+    switch (index) {
+      case 0:
+        Get.toNamed(Routes.HOME);
+        break;
+      case 1:
+        Get.toNamed(Routes.FAVORITE);
+        break;
+      case 2:
+        Get.toNamed(Routes.PROFILE);
+        break;
+    }
   }
 
   @override
@@ -44,9 +59,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           IconButton(
             onPressed: () => _onItemTapped(2),
             icon: Icon(
-              _selectedIndex == 2
-                  ? Icons.notifications
-                  : Icons.notifications_outlined,
+              _selectedIndex == 2 ? Icons.person : Icons.person_outline,
               color:
                   _selectedIndex == 2 ? Colors.white : const Color(0XFFB4DCCC),
             ),

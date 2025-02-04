@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motion_shop/app/ui_kit/colors.dart'; // Sesuaikan jika Anda punya file colors.dart
+import 'package:motion_shop/app/ui_kit/colors.dart';
 import '../controllers/detail_product_controller.dart';
 
 class DetailProductView extends GetView<DetailProductController> {
@@ -11,25 +11,17 @@ class DetailProductView extends GetView<DetailProductController> {
     return Scaffold(
       body: SafeArea(
         child: Obx(() {
-          // Jika masih loading, tampilkan indikator
           if (controller.isLoading.value) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          // Ambil data product dari controller
           final product = controller.productDetail.value;
           if (product == null) {
             return const Center(child: Text('No product detail'));
           }
 
-          // Sementara, isFavorite kita hardcode dulu atau buat field di model
-          final bool isFavorite = false;
-
           return Column(
             children: [
-              // =====================
-              //  Custom AppBar
-              // =====================
               Container(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 20.0, vertical: 10.0),
@@ -37,12 +29,10 @@ class DetailProductView extends GetView<DetailProductController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Tombol back
                     IconButton(
                       icon: const Icon(Icons.arrow_back_ios),
                       onPressed: () => Get.back(),
                     ),
-                    // Title di AppBar
                     Text(
                       product.title ?? "",
                       style: const TextStyle(
@@ -51,27 +41,27 @@ class DetailProductView extends GetView<DetailProductController> {
                         fontFamily: 'Inter',
                       ),
                     ),
-                    // Icon Favorite
-                    Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorite ? Colors.red : Colors.grey,
+                    IconButton(
+                      icon: Icon(
+                        controller.isFavorite.value
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: controller.isFavorite.value
+                            ? Colors.red
+                            : Colors.grey,
+                      ),
+                      onPressed: () => controller.toggleFavorite(product.id!),
                     ),
                   ],
                 ),
               ),
-
-              // =====================
-              //  Scrollable Content
-              // =====================
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Image
                       Image.network(
-                        // Pakai thumbnail atau images[0] jika lebih cocok
                         product.thumbnail ??
                             (product.images?.isNotEmpty == true
                                 ? product.images!.first
@@ -88,8 +78,6 @@ class DetailProductView extends GetView<DetailProductController> {
                         ),
                       ),
                       const SizedBox(height: 20),
-
-                      // Title
                       Text(
                         product.title ?? "",
                         style: const TextStyle(
@@ -98,8 +86,6 @@ class DetailProductView extends GetView<DetailProductController> {
                         ),
                       ),
                       const SizedBox(height: 10),
-
-                      // Price
                       Text(
                         '\$${(product.price ?? 0).toStringAsFixed(2)}',
                         style: const TextStyle(
@@ -108,8 +94,6 @@ class DetailProductView extends GetView<DetailProductController> {
                         ),
                       ),
                       const SizedBox(height: 10),
-
-                      // Description
                       Text(
                         product.description ?? "",
                         style: const TextStyle(
@@ -122,10 +106,6 @@ class DetailProductView extends GetView<DetailProductController> {
                   ),
                 ),
               ),
-
-              // =====================
-              // Tombol Add to Bag
-              // =====================
               GestureDetector(
                 onTap: () => Get.toNamed('/cart'),
                 child: Container(
@@ -133,7 +113,7 @@ class DetailProductView extends GetView<DetailProductController> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   padding: const EdgeInsets.symmetric(vertical: 11),
                   decoration: BoxDecoration(
-                    color: AppColor.primaryColor, // pastikan ini didefinisikan
+                    color: AppColor.primaryColor,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   width: double.infinity,
