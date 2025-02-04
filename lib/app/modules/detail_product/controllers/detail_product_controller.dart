@@ -37,16 +37,11 @@ class DetailProductController extends GetxController {
   }
 
   Future<void> checkFavorite(int productId) async {
-    final favorites = await favoriteService.getFavorites();
-    isFavorite.value = favorites.contains(productId);
+    isFavorite.value = await favoriteService.isFavorite(productId);
   }
 
   Future<void> toggleFavorite(int productId) async {
-    if (isFavorite.value) {
-      await favoriteService.removeFavorite(productId);
-    } else {
-      await favoriteService.addFavorite(productId);
-    }
+    await favoriteService.toggleFavorite(productId);
     isFavorite.value = !isFavorite.value;
   }
 }

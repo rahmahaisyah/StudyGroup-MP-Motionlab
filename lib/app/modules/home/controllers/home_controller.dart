@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
 import 'package:motion_shop/app/data/models/product_model_api.dart';
 import 'package:motion_shop/service/product_service.dart';
+import 'package:motion_shop/service/favorite_service.dart';
 
 class HomeController extends GetxController {
   final productService = ProductService();
+
+  final FavoriteService favoriteService = FavoriteService();
+  var favoriteProducts = <int>[].obs;
 
   // Loading saat pertama kali buka page Home
   var isLoading = false.obs;
@@ -23,6 +27,20 @@ class HomeController extends GetxController {
     // Saat pertama kali buka page, kita set isLoading = true
     fetchCategories();
     fetchAllProducts();
+    loadFavorites();
+  }
+
+  Future<void> loadFavorites() async {
+    favoriteProducts.value = await favoriteService.getFavorites();
+  }
+
+  Future<void> toggleFavorite(int productId) async {
+    await favoriteService.toggleFavorite(productId);
+    loadFavorites();
+  }
+
+  bool isFavorite(int productId) {
+    return favoriteProducts.contains(productId);
   }
 
   // Ambil list kategori dari API

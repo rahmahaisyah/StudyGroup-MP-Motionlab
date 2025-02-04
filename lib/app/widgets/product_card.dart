@@ -8,6 +8,7 @@ class ProductCard extends StatelessWidget {
   final String image;
   final String? description;
   final bool isFavorite;
+  final VoidCallback onFavoriteToggle;
 
   const ProductCard({
     super.key,
@@ -17,21 +18,21 @@ class ProductCard extends StatelessWidget {
     required this.image,
     this.description,
     required this.isFavorite,
+    required this.onFavoriteToggle,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Kirim ID ke detail
+        // Navigasi ke halaman detail dengan ID produk sebagai argument
         Get.toNamed(
           '/detail-product',
-          arguments: {
-            'id': productId,
-          },
+          arguments: {'id': productId},
         );
       },
       child: Container(
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: const Color(0xFFF9F9F9),
           borderRadius: BorderRadius.circular(10),
@@ -46,7 +47,7 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar
+            // Gambar produk
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
@@ -62,15 +63,18 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
+            // Nama produk
             Text(
               title,
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // Harga produk
                 Text(
                   '\$${price.toStringAsFixed(2)}',
                   style: const TextStyle(
@@ -79,9 +83,13 @@ class ProductCard extends StatelessWidget {
                     color: Color(0XFF00623B),
                   ),
                 ),
-                Icon(
-                  isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: isFavorite ? Colors.red : Colors.grey,
+                // Tombol Favorite dengan GestureDetector
+                GestureDetector(
+                  onTap: onFavoriteToggle, // Memanggil fungsi toggle favorite
+                  child: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : Colors.grey,
+                  ),
                 ),
               ],
             ),
