@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-import 'package:motion_shop/widget/button_app.dart';
-import 'package:motion_shop/widget/field_form.dart';
-import 'package:motion_shop/widget/title_form.dart';
+import 'package:motion_shop/util/button_app.dart';
+import 'package:motion_shop/util/field_form.dart';
+import 'package:motion_shop/util/title_form.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -46,7 +47,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 ButtonApp(
                   onTap: () {
-                    Navigator.pushNamed(context, "/home");
+                    Get.offNamed("/register");
                   },
                   text: "Login",
                 ),
