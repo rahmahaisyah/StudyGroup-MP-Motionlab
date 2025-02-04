@@ -1,34 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmationUserAccount extends StatelessWidget {
   final String buttonText;
   final String displayText;
   final VoidCallback onTap;
+  final VoidCallback onLoginTap;
 
   const ConfirmationUserAccount({
     Key? key,
     required this.buttonText,
     required this.displayText,
     required this.onTap,
+    required this.onLoginTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Tombol utama
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                // Default: ke /home (kalau mau pas login)
-                // atau panggil logic controller
-                Get.toNamed('/home');
-              },
+              onPressed: onLoginTap,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0XFF00623B),
                 shape: RoundedRectangleBorder(
@@ -47,8 +43,6 @@ class ConfirmationUserAccount extends StatelessWidget {
             ),
           ),
         ),
-
-        // Teks keterangan "Don't have an account?" dsb
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -8,7 +8,8 @@ import 'package:motion_shop/app/ui_kit/colors.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({super.key});
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,27 +35,32 @@ class LoginView extends GetView<LoginController> {
                 color: AppColor.grayColor,
               ),
             ),
-            const InputField(
-              hintText: 'Email',
+            InputField(
+              controller: usernameController,
+              hintText: 'Username',
               prefixIcon: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.email), // atau pakai Image.asset
+                child: Icon(Icons.person),
               ),
             ),
-            const InputField(
+            InputField(
+              controller: passwordController,
               hintText: 'Password',
               isPassword: true,
               prefixIcon: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.lock), // atau pakai Image.asset
+                child: Icon(Icons.lock),
               ),
             ),
             ConfirmationUserAccount(
               buttonText: "Login",
               displayText: "Don't have an account? ",
               onTap: () {
-                // Arahkan ke register
                 Get.toNamed('/register');
+              },
+              onLoginTap: () {
+                controller.login(
+                    usernameController.text, passwordController.text);
               },
             ),
           ],
