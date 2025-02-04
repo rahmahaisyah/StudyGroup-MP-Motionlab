@@ -160,15 +160,16 @@ class HomeView extends GetView<HomeController> {
                                 productId: product.id ?? 0,
                                 title: product.title ?? "",
                                 price: product.price ?? 0,
-                                image: product.thumbnail ??
-                                    (product.images?.isNotEmpty == true
-                                        ? product.images!.first
-                                        : ""),
+                                image: product.thumbnail ?? "",
                                 description: product.description ?? "",
-                                isFavorite: false,
+                                isFavorite:
+                                    controller.isFavorite(product.id ?? 0),
+                                onFavoriteToggle: () =>
+                                    controller.toggleFavorite(product.id ?? 0),
                               );
                             }).toList(),
                           );
+
                         }
                       }),
                     ),
