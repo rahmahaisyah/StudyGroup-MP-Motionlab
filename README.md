@@ -1,4 +1,4 @@
-# Service API untuk Produk
+# Working with API
 
 ## Deskripsi
 Proyek ini adalah implementasi API Service untuk mendapatkan data produk berdasarkan kategori, mengambil daftar kategori, serta mendapatkan detail produk berdasarkan ID. Data produk diambil dari API [DummyJSON](https://dummyjson.com/docs/products).
